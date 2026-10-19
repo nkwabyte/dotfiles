@@ -19,6 +19,8 @@ A modular, clean, and keyboard-driven macOS development environment configured w
   - [2. Configure Hammerspoon Path](#2-configure-hammerspoon-path)
   - [3. macOS Security & Accessibility Permissions](#3-macos-security--accessibility-permissions)
 - [SSH & Local Machine Configuration](#-ssh--local-machine-configuration)
+- [Daily Usage Guide (USAGE.md)](USAGE.md)
+- [Cautions & Options Reference (info.md)](info.md)
 - [Fork Personalization Status](#-fork-personalization-status)
 - [Daily Keybindings & Workflow Cheatsheet](#-daily-keybindings--workflow-cheatsheet)
   - [Tmux (Multiplexer)](#tmux-multiplexer)
@@ -211,6 +213,9 @@ Grant accessibility permissions to helper utilities:
 - **Global & Host Config**: Tracked in [`ssh/ssh-config`](file:///Users/musahibrahimali/Dev/Bash/dotfiles/ssh/ssh-config). It configures modern macOS OpenSSH defaults (`AddKeysToAgent yes`, `UseKeychain yes`, keep-alives) and maps your Git/server host aliases (`github-musahibrahimali`, `github-nkwabyte`, `github-datatrux`, `gitlab-knust`, `nkwabyte`, `bolvs-server`, `geetconsult`, `knust-gpu`, `ubuntu-rail`).
 - **Private Key Safety**: Your private keys (`~/.ssh/id_*`, `*.pem`, `*.key`) and `known_hosts` are explicitly ignored in [`.gitignore`](file:///Users/musahibrahimali/Dev/Bash/dotfiles/.gitignore) and are **never** committed to version control.
 - **Local Overrides**: An `Include ~/.ssh/config.local` directive is enabled at the top of `ssh-config` so you can add temporary, private, or machine-specific keys without altering the tracked repository.
+
+> [!TIP]
+> See [USAGE.md](USAGE.md) for a complete guide on adding new SSH hosts, managing private keys, shell overrides, and tracking new application configs.
 
 ### 2. Local Zsh Overrides (`~/.zshrc.local`)
 Your [`.zshrc`](file:///Users/musahibrahimali/Dev/Bash/dotfiles/zshrc/.zshrc) dynamically sources `~/.zshrc.local` if it exists. Use this for secrets, temporary tokens, or work-specific paths that should not be committed to Git.
