@@ -112,6 +112,7 @@ if [ "$DRY_RUN" = true ]; then
     stow -n -v -d "$DOTFILES_DIR" -t "$HOME/.config" .
 else
     stow -v -d "$DOTFILES_DIR" -t "$HOME/.config" .
+    ln -sf "$HOME/.config/starship/starship.toml" "$HOME/.config/starship.toml" 2>/dev/null || true
 fi
 log_success "~/.config packages linked."
 

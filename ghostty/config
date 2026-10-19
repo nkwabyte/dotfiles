@@ -1,5 +1,6 @@
 font-size = 19
 background-blur-radius = 20
 mouse-hide-while-typing = true
-window-decoration = false
+window-decoration = auto
+macos-titlebar-style = transparent
 macos-option-as-alt = true
