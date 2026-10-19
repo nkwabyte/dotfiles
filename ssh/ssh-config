@@ -1,13 +1,100 @@
-Host *
-  SendEnv LANG LC_*
-  MACs hmac-md5,hmac-sha1
-  ForwardX11 no
-  ForwardAgent yes
-  AddressFamily inet
-  ServerAliveInterval 15
-  ConnectTimeout 20
+# ==============================================================================
+# OpenSSH Client Configuration
+# ==============================================================================
 
-Host bastion
-    User ec2-user
-    Hostname bastion.domain.com
-    IdentityFile ~/.ssh/id_rsa
+# Global defaults
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  ForwardAgent yes
+  ServerAliveInterval 30
+  ServerAliveCountMax 6
+  ConnectTimeout 15
+  SendEnv LANG LC_*
+
+# Include local machine configuration if present (keys/passwords/local overrides)
+Include ~/.ssh/config.local
+
+# ------------------------------------------------------------------------------
+# Git Services
+# ------------------------------------------------------------------------------
+
+# Personal GitHub (nkwabyte)
+Host github-nkwabyte
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_personal
+    IdentitiesOnly yes
+
+# Personal GitHub (musahibrahimali)
+Host github-musahibrahimali
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_babs
+    IdentitiesOnly yes
+
+# Work GitHub (DataTrux)
+Host github-datatrux
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_work
+    IdentitiesOnly yes
+
+# KNUST GitLab (private instance)
+Host gitlab-knust
+    HostName git.knust.edu.gh
+    User git
+    IdentityFile ~/.ssh/id_ed25519_gitlab
+    IdentitiesOnly yes
+
+# ------------------------------------------------------------------------------
+# Remote Servers & VPS
+# ------------------------------------------------------------------------------
+
+# Geet Consult
+Host geetconsult
+    HostName 77.37.34.38
+    Port 65002
+    User u694703707
+    IdentityFile ~/.ssh/id_geet_consult
+    IdentitiesOnly yes
+
+# Bolvs Server
+Host 147.93.118.241 bolvs-server
+    HostName 147.93.118.241
+    User root
+    IdentityFile ~/.ssh/id_bolvs_server
+    IdentitiesOnly yes
+
+Host 76.13.37.199
+    HostName 76.13.37.199
+    User root
+
+# Nkwabyte VPS
+Host nkwabyte
+    HostName 31.97.119.76
+    User root
+    IdentityFile ~/.ssh/id_nkwabyte_server
+    IdentitiesOnly yes
+
+Host nkwabyte-temp
+    HostName 187.7.29.193
+    User root
+    IdentityFile ~/.ssh/id_nkwabyte_vps
+    IdentitiesOnly yes
+
+# Ubuntu Rail Gateway
+Host ubuntu-rail
+    HostName 100.74.193.4
+    User musahibrahimali
+    IdentityFile ~/.ssh/id_ubuntu_rail
+    IdentitiesOnly yes
+    SetEnv TERM=xterm-256color
+
+# KNUST GPU (via jump host)
+Host knust-gpu
+    HostName 192.168.1.145
+    User rail
+    IdentityFile ~/.ssh/id_knust_gpu
+    IdentitiesOnly yes
+    ProxyJump ubuntu-rail

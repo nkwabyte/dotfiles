@@ -4,7 +4,7 @@ format = """$directory$character"""
 palette = "catppuccin_mocha"
 # move the rest of the prompt to the right
 right_format = """$all"""
-command_timeout = 1000
+command_timeout = 3000
 
 [character]
 vicmd_symbol = "[N] >>>"
@@ -30,9 +30,7 @@ symbol = '☸ '
 disabled = true
 detect_files = ['Dockerfile']
 format = '[$symbol$context( \($namespace\))]($style) '
-contexts = [
-  { context_pattern = "arn:aws:eks:us-west-2:577926974532:cluster/zd-pvc-omer", style = "green", context_alias = "omerxx", symbol = " " },
-]
+contexts = []
 
 [docker_context]
 disabled = true
